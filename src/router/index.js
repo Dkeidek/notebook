@@ -1,25 +1,23 @@
-import { createRouter,createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import ViewNotes from '@/views/ViewNotes.vue'
 import ViewStats from '@/views/ViewStats.vue'
 
-
-const routes= [
+const routes = [
     {
         path: '/',
         name: 'notes',
-        component:ViewNotes
+        component: ViewNotes
     },
     {
         path: '/stats',
         name: 'stats',
-        component:ViewStats
+        component: ViewStats
     }
 ]
 
 const router = createRouter({
-    history:createWebHashHistory(),
+    history: createWebHashHistory(),
     routes
-
 })
 
 export default router
