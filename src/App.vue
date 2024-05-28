@@ -1,15 +1,31 @@
 <template>
   <NavBar />
-
   <div class="container is-max-desktop px-2 py-4">
     <RouterView />
+    <button @click="fetchData">Fetch Data</button>
+    <ul>
+      <li v-for="item in items" :key="item.id">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import apiClient from './axios';
+import NavBar from '@/components/Layout/NavBar.vue';
 
+const items = ref([]);
 
-import NavBar from '@/components/Layout/NavBar.vue'
+const fetchData = async () => {
+  try {
+    const response = await apiClient.get('/todo');
+    items.value = [response.data];
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+onMounted(fetchData);
 </script>
 
 <style>
