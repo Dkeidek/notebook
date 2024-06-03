@@ -18,8 +18,8 @@ const items = ref([]);
 
 const fetchData = async () => {
   try {
-    const response = await apiClient.get('/todo');
-    items.value = [response.data];
+    const response = await apiClient.get('/notebook'); // Get Anfrage
+    items.value = [response.data]; //json response
   } catch (error) {
     console.error('Error fetching data:', error);
   }
