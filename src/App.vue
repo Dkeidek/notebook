@@ -4,7 +4,7 @@
     <RouterView />
     <button @click="fetchData">Fetch Data</button>
     <ul>
-      <li v-for="item in items" :key="item.id">{{ item }}</li>
+      <li v-for="item in items" :key="item.id">description:{{ item.description }}</li>
     </ul>
   </div>
 </template>
@@ -18,8 +18,8 @@ const items = ref([]);
 
 const fetchData = async () => {
   try {
-    const response = await apiClient.get('/notebook'); // Get Anfrage
-    items.value = [response.data]; //json response
+    const response = await apiClient.get('/notebook'); // Get
+    items.value = response.data; //json
   } catch (error) {
     console.error('Error fetching data:', error);
   }
